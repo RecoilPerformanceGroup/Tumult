@@ -11,26 +11,32 @@
 void TestScene::setup() {
     name = "Test Scene";
     oscAddress = "/testscene";
+    
     light.setPointLight();
     light.setPosition(-2, -2, -2);
+    
+    enabled = true;
+
 }
 
 void TestScene::draw(int _surfaceId) {
     
-    ofBackground (0);
+    ofBackground(0);
     // A scene can draw to multiple surfaces
         light.enable();
+    //light.draw();
     
         ofSetColor(255,255,255);
         ofPushMatrix();
-       //ofRotateX(ofGetElapsedTimef()*10);
-    //ofRotateY(ofGetElapsedTimef()*10);
-    //ofRotateZ(ofGetElapsedTimef()*10);
+    
+    ofRotateX(ofGetElapsedTimef()*10);
+    ofRotateY(ofGetElapsedTimef()*10);
+    ofRotateZ(ofGetElapsedTimef()*10);
     
     ofFill();
     //ofDrawGridPlane(0.8);
     
-    ofDrawBox(0,0,0,2.0,2.0,sin(ofGetElapsedTimef())*4.0);
+    ofDrawBox(0,0,0,0.5,0.5,0.5);
     
     //ofDrawCone(0, 0, 0, 2, 4);
     
@@ -44,7 +50,6 @@ void TestScene::draw(int _surfaceId) {
 
 void TestScene::update() {
     
-    enabled = true;
 }
 
 

@@ -1,11 +1,11 @@
 #include "ofMain.h"
 #include "testApp.h"
-#include "ofGlProgrammableRenderer.h"
+//#include "ofGlProgrammableRenderer.h"
 
 //========================================================================
 int main( ){    
     
-    ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
+    //ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
     ofSetupOpenGL(1280, 800, OF_WINDOW);
     
 	// this kicks off the running of my app

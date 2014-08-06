@@ -182,6 +182,7 @@ void testApp::draw()
     ofSetColor(255);
     ofEnableDepthTest();
     ofEnableAlphaBlending();
+    ofEnableLighting();
     glEnable(GL_DEPTH_TEST);
     // draw scenes to surfaces, they are kept in the cameras fbo
     
@@ -195,6 +196,7 @@ void testApp::draw()
         planes[i]->endRight();
     }
     
+    ofDisableLighting();
     ofDisableDepthTest();
     
     if(drawChessboards) {
@@ -230,7 +232,6 @@ void testApp::draw()
         fboHeight = 0;
     }
     
-    
         for(int i=0; i<guis.size(); i++) {
             
             /*guis[i]->setScrollArea(guis[i]->getRect()->x, ofGetHeight()-200, guiWidth, 200);
@@ -247,7 +248,7 @@ void testApp::draw()
             }
     }
     
-    sbsOutputServer.publishFBO(&fbo);
+    sbsOutputServer.publishTexture(&fbo.getTextureReference());
 }
 
 //--------------------------------------------------------------
