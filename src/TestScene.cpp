@@ -43,6 +43,8 @@ void TestScene::draw(int _surfaceId) {
 }
 
 void TestScene::update() {
+    
+    enabled = true;
 }
 
 

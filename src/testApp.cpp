@@ -2,10 +2,6 @@
 #include <OpenGL/OpenGL.h>
 #include <ofGLUtils.h>
 
-// Syphon together with 3D primitive and NoFill does not run
-
-vector<ofVec3f> points;
-
 //--------------------------------------------------------------
 void testApp::setup()
 {
@@ -106,7 +102,6 @@ void testApp::setup()
     for(int i=0; i<guis.size(); i++) {
         guis[i]->loadSettings("GUI/" + guis[i]->getName() + ".xml");
         guis[i]->autoSizeToFitWidgets();
-        guis[i]->setAutoDraw(false);
         ofAddListener(guis[i]->newGUIEvent,this,&testApp::guiEvent);
     }
     
