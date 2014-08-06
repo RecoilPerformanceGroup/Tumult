@@ -19,7 +19,6 @@
 		0420B321188ECE3F0086D388 /* wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0420B30B188ECE3F0086D388 /* wall.cpp */; };
 		0420B322188ECE3F0086D388 /* ofxVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0420B311188ECE3F0086D388 /* ofxVoro.cpp */; };
 		0420B334188F1F490086D388 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0420B332188F1F490086D388 /* TestScene.cpp */; };
-		043C51D11888664100ADD204 /* BoxFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043C51CF1888664100ADD204 /* BoxFloor.cpp */; };
 		04A6C826188099DE00B17C45 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04A6C800188099DE00B17C45 /* IpEndpointName.cpp */; };
 		04A6C827188099DE00B17C45 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04A6C805188099DE00B17C45 /* NetworkingUtils.cpp */; };
 		04A6C828188099DE00B17C45 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04A6C806188099DE00B17C45 /* UdpSocket.cpp */; };
@@ -215,8 +214,6 @@
 		0420B332188F1F490086D388 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		0420B333188F1F490086D388 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		042128171884956E00F516C5 /* ofxCoolGlasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCoolGlasses.h; sourceTree = "<group>"; };
-		043C51CF1888664100ADD204 /* BoxFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxFloor.cpp; sourceTree = "<group>"; };
-		043C51D01888664100ADD204 /* BoxFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxFloor.h; sourceTree = "<group>"; };
 		0469E91D19215F6D009965DF /* frag.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = frag.glsl; sourceTree = "<group>"; };
 		0469E91E19215F6D009965DF /* geom.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = geom.glsl; sourceTree = "<group>"; };
 		0469E91F19215F6D009965DF /* lightTexture.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lightTexture.frag; sourceTree = "<group>"; };
@@ -2309,8 +2306,6 @@
 				0420B330188F18470086D388 /* ContentScene.h */,
 				0420B332188F1F490086D388 /* TestScene.cpp */,
 				0420B333188F1F490086D388 /* TestScene.h */,
-				043C51CF1888664100ADD204 /* BoxFloor.cpp */,
-				043C51D01888664100ADD204 /* BoxFloor.h */,
 				042128171884956E00F516C5 /* ofxCoolGlasses.h */,
 				04144F2D188585D000C28505 /* StereoPlane.h */,
 			);
@@ -2503,7 +2498,6 @@
 				08A36D0A191D06F00002F278 /* ofxCvGrayscaleImage.cpp in Sources */,
 				04A6C849188099E700B17C45 /* ofxGuiGroup.cpp in Sources */,
 				08A6D7EA1911259D00A66762 /* ofxEasingExpo.cpp in Sources */,
-				043C51D11888664100ADD204 /* BoxFloor.cpp in Sources */,
 				083B993C190FD0BC00600B48 /* ofxUIImageButton.cpp in Sources */,
 				0420B319188ECE3F0086D388 /* cell.cpp in Sources */,
 				083B9953190FD0BC00600B48 /* ofxUITextArea.cpp in Sources */,
