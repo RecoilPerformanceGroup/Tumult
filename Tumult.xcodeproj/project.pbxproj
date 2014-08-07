@@ -20,8 +20,6 @@
 		0420B322188ECE3F0086D388 /* ofxVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0420B311188ECE3F0086D388 /* ofxVoro.cpp */; };
 		0420B334188F1F490086D388 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0420B332188F1F490086D388 /* TestScene.cpp */; };
 		04272698199252900046A95B /* BulletTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04272696199252900046A95B /* BulletTestScene.cpp */; };
-		042726B2199256890046A95B /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 042726AF199256890046A95B /* MSACoreGL.cpp */; };
-		042726B71992569A0046A95B /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 042726B51992569A0046A95B /* MSAObjCPointer.cpp */; };
 		04986E801993852400F62BA7 /* ofxBulletJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04986C2F1993852300F62BA7 /* ofxBulletJoint.cpp */; };
 		04986E811993852400F62BA7 /* ofxBulletWorldRigid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04986C351993852300F62BA7 /* ofxBulletWorldRigid.cpp */; };
 		04986E821993852400F62BA7 /* GLDebugDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04986C381993852300F62BA7 /* GLDebugDrawer.cpp */; };
@@ -238,15 +236,6 @@
 		042128171884956E00F516C5 /* ofxCoolGlasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCoolGlasses.h; sourceTree = "<group>"; };
 		04272696199252900046A95B /* BulletTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BulletTestScene.cpp; sourceTree = "<group>"; };
 		04272697199252900046A95B /* BulletTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletTestScene.h; sourceTree = "<group>"; };
-		042726AB199256890046A95B /* MSACore-Cinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
-		042726AC199256890046A95B /* MSACore-OF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
-		042726AD199256890046A95B /* MSACore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
-		042726AE199256890046A95B /* MSACoreCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACoreCommon.h; sourceTree = "<group>"; };
-		042726AF199256890046A95B /* MSACoreGL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MSACoreGL.cpp; sourceTree = "<group>"; };
-		042726B0199256890046A95B /* MSACoreGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACoreGL.h; sourceTree = "<group>"; };
-		042726B1199256890046A95B /* MSACoreMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSACoreMath.h; sourceTree = "<group>"; };
-		042726B51992569A0046A95B /* MSAObjCPointer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MSAObjCPointer.cpp; sourceTree = "<group>"; };
-		042726B61992569A0046A95B /* MSAObjCPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAObjCPointer.h; sourceTree = "<group>"; };
 		04986C2B1993852300F62BA7 /* ofxBulletCollisionData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBulletCollisionData.h; sourceTree = "<group>"; };
 		04986C2C1993852300F62BA7 /* ofxBulletMousePickEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBulletMousePickEvent.h; sourceTree = "<group>"; };
 		04986C2D1993852300F62BA7 /* ofxBulletRaycastData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBulletRaycastData.h; sourceTree = "<group>"; };
@@ -1192,47 +1181,6 @@
 				0420B312188ECE3F0086D388 /* ofxVoro.h */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		042726A9199256890046A95B /* ofxMSACore */ = {
-			isa = PBXGroup;
-			children = (
-				042726AA199256890046A95B /* src */,
-			);
-			name = ofxMSACore;
-			sourceTree = "<group>";
-		};
-		042726AA199256890046A95B /* src */ = {
-			isa = PBXGroup;
-			children = (
-				042726AB199256890046A95B /* MSACore-Cinder.h */,
-				042726AC199256890046A95B /* MSACore-OF.h */,
-				042726AD199256890046A95B /* MSACore.h */,
-				042726AE199256890046A95B /* MSACoreCommon.h */,
-				042726AF199256890046A95B /* MSACoreGL.cpp */,
-				042726B0199256890046A95B /* MSACoreGL.h */,
-				042726B1199256890046A95B /* MSACoreMath.h */,
-			);
-			name = src;
-			path = ../../../addons/ofxMSACore/src;
-			sourceTree = "<group>";
-		};
-		042726B31992569A0046A95B /* ofxMSAObjCPointer */ = {
-			isa = PBXGroup;
-			children = (
-				042726B41992569A0046A95B /* src */,
-			);
-			name = ofxMSAObjCPointer;
-			sourceTree = "<group>";
-		};
-		042726B41992569A0046A95B /* src */ = {
-			isa = PBXGroup;
-			children = (
-				042726B51992569A0046A95B /* MSAObjCPointer.cpp */,
-				042726B61992569A0046A95B /* MSAObjCPointer.h */,
-			);
-			name = src;
-			path = ../../../addons/ofxMSAObjCPointer/src;
 			sourceTree = "<group>";
 		};
 		0469E91C19215F6D009965DF /* shaders */ = {
@@ -2844,8 +2792,6 @@
 			isa = PBXGroup;
 			children = (
 				04986C281993852300F62BA7 /* ofxBullet */,
-				042726B31992569A0046A95B /* ofxMSAObjCPointer */,
-				042726A9199256890046A95B /* ofxMSACore */,
 				08C2F83B199235C3003D130D /* ofxOsc */,
 				08A36BFF191D06F00002F278 /* ofxOpenCv */,
 				08A6D7FE1911259D00A66762 /* ofxTextInputField */,
@@ -3077,7 +3023,6 @@
 				08C2F869199235C3003D130D /* ofxOscReceiver.cpp in Sources */,
 				083B993D190FD0BC00600B48 /* ofxUIImageSampler.cpp in Sources */,
 				083B9944190FD0BC00600B48 /* ofxUIMovingGraph.cpp in Sources */,
-				042726B2199256890046A95B /* MSACoreGL.cpp in Sources */,
 				083B9959190FD0BC00600B48 /* ofxUIWidget.cpp in Sources */,
 				083B9937190FD0BC00600B48 /* ofxUIDropDownList.cpp in Sources */,
 				08A6D7F81911259D00A66762 /* ofxMSATimer.cpp in Sources */,
@@ -3154,7 +3099,6 @@
 				04986E801993852400F62BA7 /* ofxBulletJoint.cpp in Sources */,
 				08A36D08191D06F00002F278 /* ofxCvContourFinder.cpp in Sources */,
 				04986E891993852400F62BA7 /* ofxBulletCylinder.cpp in Sources */,
-				042726B71992569A0046A95B /* MSAObjCPointer.cpp in Sources */,
 				083B994B190FD0BC00600B48 /* ofxUIRotarySlider.cpp in Sources */,
 				083B994D190FD0BC00600B48 /* ofxUISlider.cpp in Sources */,
 				083B993F190FD0BC00600B48 /* ofxUIImageToggle.cpp in Sources */,
