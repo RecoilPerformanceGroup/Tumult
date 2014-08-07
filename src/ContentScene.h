@@ -23,6 +23,8 @@ public:
     bool enabled;
     float time;
     
+    ofCamera * camRef;
+    
     ContentScene() {
     };
     

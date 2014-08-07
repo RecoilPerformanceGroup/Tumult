@@ -15,7 +15,7 @@ void TestScene::setup() {
     light.setPointLight();
     light.setPosition(-2, -2, -2);
     
-    enabled = true;
+    enabled = false;
 
 }
 

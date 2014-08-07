@@ -5,13 +5,15 @@ OF_PATH = ../../..
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
 #include "../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
 
-//HEADER_BULLET = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/include/**"
+HEADER_BULLET = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/include/**"
 
-//LIB_BULLET_COLLISION_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libBulletCollision.a"
-//LIB_BULLET_DYNAMICS_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libBulletDynamics.a"
-//LIB_BULLET_MATH_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libLinearMath.a"
-//LIB_BULLET_MINI_CL_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libMiniCL.a"
-//LIB_BULLET_SOFT_BODY_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libBulletSoftBody.a"
+LIB_BULLET_COLLISION_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libBulletCollision.a"
+LIB_BULLET_DYNAMICS_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libBulletDynamics.a"
+LIB_BULLET_MATH_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libLinearMath.a"
+LIB_BULLET_MINI_CL_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libMiniCL.a"
+LIB_BULLET_SOFT_BODY_RELEASE = "$(OF_PATH)/addons/ofxBullet/libs/bullet2.8.1/lib/osx/i386/libBulletSoftBody.a"
+
+LIB_BULLET_ALL_RELEASE = $(LIB_BULLET_COLLISION_RELEASE) $(LIB_BULLET_DYNAMICS_RELEASE) $(LIB_BULLET_MATH_RELEASE) $(LIB_BULLET_MINI_CL_RELEASE) $(LIB_BULLET_SOFT_BODY_RELEASE)
 
 FRAMEWORK_SYPHON = "$(OF_PATH)/addons/ofxSyphon/libs/Syphon/lib/osx/"
 
@@ -30,14 +32,11 @@ OSC_ADDON = "../../../addons/ofxOsc/libs/oscpack/src"
 
 LIB_SNDFILE = "$(OF_PATH)/addons/ofxTimeline/libs/sndfile/lib/osx/libsndfile.a"
 
-
-//LIB_BULLET_ALL_RELEASE = $(LIB_BULLET_COLLISION_RELEASE) $(LIB_BULLET_DYNAMICS_RELEASE) $(LIB_BULLET_MATH_RELEASE) $(LIB_BULLET_MINI_CL_RELEASE) $(LIB_BULLET_SOFT_BODY_RELEASE)
-
-OTHER_LDFLAGS = $(OF_CORE_LIBS) $(OF_OPENCV_LIBS) $(LIB_SNDFILE)  "-L/usr/local/lib/" //$(LIB_BULLET_ALL_RELEASE)
+OTHER_LDFLAGS = $(OF_CORE_LIBS) $(OF_OPENCV_LIBS) $(LIB_SNDFILE)  "-L/usr/local/lib/" $(LIB_BULLET_ALL_RELEASE)
 
 HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS)
 
-USER_HEADER_SEARCH_PATHS = $(OF_OPENCV_HEADERS) "src" $(OSC_ADDON) //$(HEADER_BULLET)
+USER_HEADER_SEARCH_PATHS = $(OF_OPENCV_HEADERS) "src" $(OSC_ADDON) $(HEADER_BULLET)
 
 FRAMEWORK_SEARCH_PATHS = $(FRAMEWORK_SYPHON)
 OTHER_CPLUSPLUSFLAGS = "-D__MACOSX_CORE__ -lpthread -mtune=native"

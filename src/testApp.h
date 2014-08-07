@@ -8,6 +8,7 @@
 #include "StereoPlane.h"
 #include "ContentScene.h"
 #include "TestScene.h"
+#include "BulletTestScene.h"
 #include "ofxUI.h"
 
 class testApp : public ofBaseApp
@@ -64,10 +65,9 @@ public:
     ofxXmlSettings settings;
     
     void drawScenes(int _surfaceId=0);
-        
-    // Scenes
-    TestScene * testScene;
-
+    
+    
+    BulletTestScene * clothScene;
     vector<ContentScene*> contentScenes;
         
 };

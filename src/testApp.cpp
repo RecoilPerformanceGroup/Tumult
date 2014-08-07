@@ -38,8 +38,14 @@ void testApp::setup()
     oscReceiver.setup(9001);
     
     // ####  Setup scenes
-    testScene = new TestScene();
-    contentScenes.push_back(testScene);
+    
+    clothScene = new BulletTestScene();
+    contentScenes.push_back(new TestScene());
+    contentScenes.push_back(clothScene);
+
+    
+    
+    clothScene->camRef = &planes[0]->cam.left;
     
     for(int i=0; i<contentScenes.size(); i++) {
         contentScenes[i]->setupScene(i);
@@ -254,7 +260,7 @@ void testApp::draw()
 //--------------------------------------------------------------
 void testApp::keyPressed(int key)
 {
-	if (key == 'f'){
+	if (key == 'F'){
 		ofToggleFullscreen();
     } else if(key=='t') {
         
@@ -264,8 +270,10 @@ void testApp::keyPressed(int key)
         drawGUI = !drawGUI;
         
     } else if(key=='p') {
-        drawMonitor = !drawMonitor;
+        //drawMonitor = !drawMonitor;
     }
+    
+    clothScene->keyPressed(key);
     
 }
 
@@ -273,7 +281,7 @@ void testApp::keyPressed(int key)
 //--------------------------------------------------------------
 void testApp::keyReleased(int key)
 {
-    
+    clothScene->keyReleased(key);
 }
 
 //--------------------------------------------------------------
@@ -281,23 +289,29 @@ void testApp::mouseMoved(int x, int y)
 {
     //ofVec3f mousePoint(x - ofGetWidth()/2,y-ofGetHeight()/2, 400);
     //points.push_back(mousePoint);
+    
+    clothScene->mouseMoved(x, y);
+
 }
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button)
 {
-    
+    clothScene->mouseDragged(x, y, button);
+
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button)
 {
-    
+    //clothScene->mousePressed(x, y, button);
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button)
 {
+    
+    clothScene->mouseReleased(x, y, button);
     
 }
 
