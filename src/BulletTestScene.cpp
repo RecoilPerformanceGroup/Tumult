@@ -13,10 +13,16 @@ void BulletTestScene::setup() {
     oscAddress = "/BulletTestScene";
     
     light.setPointLight();
-    light.setPosition(-2, -2, -2);
+    light.setAmbientColor(ofColor(255,255,255,255));
+    light.setDiffuseColor(ofColor(255,100,100,255));
+    light.setPosition(-1, -1, -1);
+    light.setAttenuation(5);
+    
+    dirLight.setDirectional();
+    dirLight.setPosition(1, 1, -1);
+    dirLight.lookAt(ofVec3f(0,0,0));
     
     enabled = true;
-    
     
     world.setup();
     //world.setCamera(camRef);
@@ -43,54 +49,104 @@ void BulletTestScene::setup() {
 	bDrawDebug	= false;
 	bSpacebar	= false;
 	bShapesNeedErase = false;
+    
+    ofDisableArbTex();
+    ofLoadImage(texture, "dot.png");
+    
+    
+    //gaus.setup(1920, 1080);
+    //gaus.allocate(1920, 1080);
+    //gaus.setRadius(0.1);
+    
+    points.push_back(ofVec3f(0.0, 0.0, 0.0));
+    // we are passing the size in as a normal x position
+    float size = 0.02f;
+    sizes.push_back(ofVec3f(size));
+
+    
+    points.push_back(ofVec3f(0.0, 0.0, 0.0));
+    // we are passing the size in as a normal x position
+    size = 0.02f;
+    sizes.push_back(ofVec3f(size));
+    
+    // upload the data to the vbo
+	int total = (int)points.size();
+	vbo.setVertexData(&points[0], total, GL_STATIC_DRAW);
+	vbo.setNormalData(&sizes[0], total, GL_STATIC_DRAW);
+    
+    
 
 }
+
+void BulletTestScene::beginWorld(int _surfaceId) {
+}
+
+void BulletTestScene::endWorld(int _surfaceId) {
+}
+
 void BulletTestScene::draw(int _surfaceId) {
     
-    //glEnable( GL_DEPTH_TEST );
-	//camera.begin();
-	
-	ofSetLineWidth(2.f);
+    ofEnableLighting();
+    
+    ofSetLineWidth(2.f);
 	if(bDrawDebug) world.drawDebug();
 	
-	ofSetColor(255, 255, 255);
-	//ofDrawSphere(mousePos, .15f);
-	
-	//ofEnableLighting();
+	ofSetColor(255, 255, 255, 255);
 	light.enable();
-	//light.setPosition( mousePos );
 	
-	ofSetColor(100, 100, 100);
-	//ground->draw();
-	
-	ofSetColor(255, 0, 255);
-	for(int i = 0; i < shapes.size(); i++) {
-		ofSetColor(255);
-		shapes[i]->draw();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+	ofEnablePointSprites();
+    
+    
+    glDepthMask(GL_FALSE);
+    texture.bind();
+
+    //vbo.draw(GL_POINTS, 0, (int)points.size());
+    //glBegin(GL_POINTS);
+    
+    for(int i = 0; i < shapes.size(); i++) {
+        
+        //glVertex3f(shapes[i]->getPosition().x, shapes[i]->getPosition().y, shapes[i]->getPosition().z);
+        
+        ofPushMatrix();
+        ofTranslate(shapes[i]->getPosition());
+        ofDrawPlane(0, 0, 0.1, 0.1);
+        ofPopMatrix();
+        
 	}
+    
+    
+    
+    
+    //glEnd();
+
+    texture.unbind();
+    
+    glDepthMask(GL_TRUE);
+    
+    ofDisablePointSprites();
+	ofDisableBlendMode();
+    
+    
+    ofEnableAlphaBlending();
 	ofSetColor(220, 220, 220);
 	for(int i = 0; i < joints.size(); i++) {
-		joints[i]->draw();
+		//joints[i]->draw();
 	}
     
+    
 	light.disable();
-	//ofDisableLighting();
-	
-	//camera.end();
-	//glDisable(GL_DEPTH_TEST);
-	
-	ofSetColor(255, 255, 255);
-	/*stringstream ss;
-	ss << "framerate: " << ofToString(ofGetFrameRate(),0) << endl;
-	ss << "num shapes: " << (shapes.size()) << endl;
-	ss << "draw debug (d): " << ofToString(bDrawDebug, 0) << endl;
-	ss << "break joints with spacebar: " << bSpacebar << endl;
-	ofDrawBitmapString(ss.str().c_str(), 10, 10);*/
-    
-    
 }
 
 void BulletTestScene::update() {
+    
+    
+    for(int i = 0; i < shapes.size(); i++) {
+        
+        points[i] = shapes[i]->getPosition();
+        
+	}
+    
     
     world.update();
 	//ofSetWindowTitle(ofToString(ofGetFrameRate(), 0));
@@ -164,6 +220,13 @@ void BulletTestScene::keyPressed(int key){
             ((ofxBulletSphere*) shapes[shapes.size()-1])->create( world.world, pos, mass, rsize );
             shapes[shapes.size()-1]->add();
             
+            
+            points.push_back(pos);
+            
+            // we are passing the size in as a normal x position
+            float size = rsize;
+            sizes.push_back(ofVec3f(size));
+            
             shapeColors.push_back( colors[0] );
             
             joints.push_back( new ofxBulletJoint() );
@@ -196,7 +259,6 @@ void BulletTestScene::keyPressed(int key){
             break;
             
         }
-            
             
             
 		//default:

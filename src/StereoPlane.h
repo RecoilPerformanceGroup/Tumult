@@ -297,13 +297,8 @@ public:
     
     void draw(){
         ofSetColor(255);
-        if(controlSide == 1) {
-            drawRight();
-            drawLeft();
-        } else {
-            drawLeft();
-            drawRight();
-        }
+        drawRight();
+        drawLeft();
     }
     
     void update() {

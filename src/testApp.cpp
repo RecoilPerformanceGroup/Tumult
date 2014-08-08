@@ -19,14 +19,16 @@ void testApp::setup()
     // we output 4x1920x1080 layered in two units
     ofSeedRandom(10);
     
-    int resx = 1920;
+    int resx = 1920*2;
     int resy = 1080;
     
     fbo.allocate(resx, resy);
     
+    //gaus.allocate(resx, resy);
+    
     settings.load("tumult.xml");
     
-    wall = new StereoPlane("wallLeft");
+    wall = new StereoPlane("wall");
     wall->setup(resx/2, resy, &settings);
     wall->setViewPort(ofRectangle(-1, -1, 2, 2));
     wall->pos = ofVec2f(0,0);
@@ -43,8 +45,6 @@ void testApp::setup()
     contentScenes.push_back(new TestScene());
     contentScenes.push_back(clothScene);
 
-    
-    
     clothScene->camRef = &planes[0]->cam.left;
     
     for(int i=0; i<contentScenes.size(); i++) {
@@ -181,9 +181,6 @@ void testApp::draw()
     
     //float fboHeight = 200;
     
-    for(int s=0; s<contentScenes.size();s++) {
-        //contentScenes[s]->time = timeline.getCurrentTime();
-    }
     
     ofSetColor(255);
     ofEnableDepthTest();
@@ -218,21 +215,30 @@ void testApp::draw()
     }
     
     // Draw the scenes to the output fbo
+    
     fbo.begin(); {
+        
         //ofClear(0.0, 0.0, 0.0, 1.0); // This causes flickering if alpha gets cleared
         ofSetColor(255);
         ofFill();
+        
         for(int i=0; i<planes.size(); i++) {
             planes[i]->draw();
         }
         
+        
     }fbo.end();
+    
     
     ofBackground(20);
     
     if(drawMonitor) {
         ofSetColor(255,255);
+        
         fbo.draw(0,0,fboWidth,fboHeight);
+        
+        
+        
         
     } else {
         fboHeight = 0;

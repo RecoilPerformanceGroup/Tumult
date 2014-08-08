@@ -20,6 +20,9 @@ public:
     string name = "";
     string oscAddress = "/default";
     
+    float width;
+    float height;
+    
     bool enabled;
     float time;
     
@@ -59,8 +62,6 @@ public:
         indexStr = "["+ ofToString(_index) + "] ";
 
         setup();
-        
-
     };
     
     void updateScene() {
