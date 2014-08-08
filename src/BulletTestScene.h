@@ -38,7 +38,6 @@ public:
     
     ofVec3f						centerPos;
     
-    
     ofxBulletWorldRigid			world;
 	ofxBulletBox*				ground;
 	

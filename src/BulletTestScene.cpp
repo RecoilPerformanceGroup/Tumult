@@ -13,17 +13,20 @@ void BulletTestScene::setup() {
     oscAddress = "/BulletTestScene";
     
     light.setPointLight();
+
     light.setAmbientColor(ofColor(255,255,255,255));
     light.setDiffuseColor(ofColor(255,100,100,255));
     light.setPosition(-1, -1, -1);
     light.setAttenuation(5);
+
+    light.setPosition(-1, -1, 2);
     
     dirLight.setDirectional();
     dirLight.setPosition(1, 1, -1);
     dirLight.lookAt(ofVec3f(0,0,0));
     
     enabled = true;
-    
+
     world.setup();
     //world.setCamera(camRef);
 	
@@ -33,12 +36,12 @@ void BulletTestScene::setup() {
 	ground->add();
 	*/
 	
-    world.setGravity(ofVec3f(-0.02,0,0));
+    world.setGravity(ofVec3f(-0.0,0.00,0.0));
     
 	jointLength = .005f;
 	
 	shapes.push_back( new ofxBulletSphere() );
-	((ofxBulletSphere*)shapes[0])->create( world.world, ofVec3f(0, 0.0, 0.0), 0.2f, 0.02f );
+	((ofxBulletSphere*)shapes[0])->create( world.world, ofVec3f(0, 0.0, 0.0), 1.2f, 0.02f );
 	shapes[0]->add();
 	
 	
@@ -52,7 +55,6 @@ void BulletTestScene::setup() {
     
     ofDisableArbTex();
     ofLoadImage(texture, "dot.png");
-    
     
     //gaus.setup(1920, 1080);
     //gaus.allocate(1920, 1080);
@@ -89,6 +91,9 @@ void BulletTestScene::draw(int _surfaceId) {
     ofEnableLighting();
     
     ofSetLineWidth(2.f);
+    //glEnable( GL_DEPTH_TEST );
+	//camera.begin();
+	
 	if(bDrawDebug) world.drawDebug();
 	
 	ofSetColor(255, 255, 255, 255);
@@ -96,7 +101,6 @@ void BulletTestScene::draw(int _surfaceId) {
 	
     ofEnableBlendMode(OF_BLENDMODE_ADD);
 	ofEnablePointSprites();
-    
     
     glDepthMask(GL_FALSE);
     texture.bind();
@@ -116,8 +120,6 @@ void BulletTestScene::draw(int _surfaceId) {
 	}
     
     
-    
-    
     //glEnd();
 
     texture.unbind();
@@ -127,15 +129,23 @@ void BulletTestScene::draw(int _surfaceId) {
     ofDisablePointSprites();
 	ofDisableBlendMode();
     
-    
     ofEnableAlphaBlending();
-	ofSetColor(220, 220, 220);
+	ofSetColor(255, 0, 255);
+	for(int i = 0; i < shapes.size(); i++) {
+		ofSetColor(255,255,255,255);
+		//shapes[i]->draw();
+        //ofDrawBox(shapes[i]->getPosition().x, shapes[i]->getPosition().y, shapes[i]->getPosition().z, 0.1, 0.1, 0.1);
+        
+	}
+	ofSetColor(255, 255, 255, 255);
 	for(int i = 0; i < joints.size(); i++) {
 		//joints[i]->draw();
 	}
     
     
 	light.disable();
+
+    
 }
 
 void BulletTestScene::update() {
@@ -154,15 +164,6 @@ void BulletTestScene::update() {
     
 	joints[0]->updatePivotPos( centerPos, 0.01f );
 	
-	if(bSpacebar) {
-		for (int i = 1; i < joints.size(); i++) {
-			delete joints[i];
-		}
-		joints.erase(joints.begin()+1, joints.end());
-		bSpacebar = false;
-		bShapesNeedErase = true;
-	}
-	
 	for (int i = 1; i < joints.size(); i++) {
 		if(i == 1) {
 			//joints[i]->updatePivotPos( shapes[i-1]->getPosition(), jointLength*0.2f );
@@ -180,7 +181,7 @@ void BulletTestScene::setGui(ofxUICanvas * gui, float width){
     
     gui->addSlider("posx", -2, 2, &centerPos.x);
     gui->addSlider("posy", -2, 2, &centerPos.y);
-    gui->addSlider("posz", -2, 2, &centerPos.z);
+    gui->addSlider("posz", -4, 4, &centerPos.z);
 }
 
 void BulletTestScene::receiveOsc(ofxOscMessage * m, string rest) {
@@ -215,7 +216,7 @@ void BulletTestScene::keyPressed(int key){
             
             ofVec3f pos = ofVec3f(ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5), ofRandom(-0.1, 0.1));
             
-            float mass = 0.10;
+            float mass = 4.10;
             
             ((ofxBulletSphere*) shapes[shapes.size()-1])->create( world.world, pos, mass, rsize );
             shapes[shapes.size()-1]->add();
@@ -236,7 +237,22 @@ void BulletTestScene::keyPressed(int key){
                 rshape = ofRandom(shapes.size()-1);
             }
             
+            vector<ofVec3f> positions;
+            
+            positions.push_back(ofVec3f(1,1,0));
+            positions.push_back(ofVec3f(1,-1,0));
+            positions.push_back(ofVec3f(-1,1,0));
+            positions.push_back(ofVec3f(-1,-1,0));
+            
+            joints[joints.size()-1]->create(world.world, shapes[shapes.size()-1], positions[ofRandom(positions.size())]);
+            
+            
+            joints[joints.size()-1]->add();
+            
+            
+            joints.push_back( new ofxBulletJoint() );
             joints[joints.size()-1]->create(world.world, shapes[shapes.size()-1], shapes[0]);
+            
             joints[joints.size()-1]->add();
             
 			break;
