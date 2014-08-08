@@ -13,7 +13,7 @@ void BulletTestScene::setup() {
     oscAddress = "/BulletTestScene";
     
     light.setPointLight();
-    light.setPosition(-1, -1, 2);
+    light.setPosition(-1, -1, -3);
     
     enabled = true;
     
@@ -26,14 +26,13 @@ void BulletTestScene::setup() {
 	ground->add();
 	*/
 	
-    world.setGravity(ofVec3f(-0.0,0.00,0.0));
+    world.setGravity(ofVec3f(0.00,0.02,0.0));
     
 	jointLength = .005f;
 	
 	shapes.push_back( new ofxBulletSphere() );
 	((ofxBulletSphere*)shapes[0])->create( world.world, ofVec3f(0, 0.0, 0.0), 1.2f, 0.02f );
 	shapes[0]->add();
-	
 	
 	joints.push_back( new ofxBulletJoint() );
 	joints[joints.size()-1]->create( world.world, shapes[0], ofVec3f(0, 0.0, 0.0));
@@ -49,7 +48,7 @@ void BulletTestScene::draw(int _surfaceId) {
     //glEnable( GL_DEPTH_TEST );
 	//camera.begin();
 	
-	ofSetLineWidth(14.f);
+	ofSetLineWidth(8.f);
 	if(bDrawDebug) world.drawDebug();
 	
 	ofSetColor(255, 255, 255);
@@ -66,10 +65,10 @@ void BulletTestScene::draw(int _surfaceId) {
 	for(int i = 0; i < shapes.size(); i++) {
 		ofSetColor(255,255,255,255);
 		//shapes[i]->draw();
-        //ofDrawBox(shapes[i]->getPosition().x, shapes[i]->getPosition().y, shapes[i]->getPosition().z, 0.1, 0.1, 0.1);
+        ofDrawBox(shapes[i]->getPosition().x, shapes[i]->getPosition().y, shapes[i]->getPosition().z, 0.02, 0.02, 0.02);
         
 	}
-	ofSetColor(255, 255, 255, 255);
+	ofSetColor(255, 255, 255, 150);
 	for(int i = 0; i < joints.size(); i++) {
 		joints[i]->draw();
 	}
@@ -87,16 +86,6 @@ void BulletTestScene::draw(int _surfaceId) {
 	ss << "draw debug (d): " << ofToString(bDrawDebug, 0) << endl;
 	ss << "break joints with spacebar: " << bSpacebar << endl;
 	ofDrawBitmapString(ss.str().c_str(), 10, 10);*/
-    
-    
-    ofBackground(0, 0, 0);
-    ofSetColor(255, 255, 255);
-    ofPushMatrix();
-    
-    ofTranslate(0, 0, -0.2);
-    ofCircle(0, 0, 0.4);
-    
-    ofPopMatrix();
     
 }
 
