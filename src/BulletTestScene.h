@@ -11,10 +11,13 @@
 #include "ofxBullet.h"
 #include "ofMain.h"
 
+
 class BulletTestScene : public ContentScene {
     
 public:
     void draw(int _surfaceId);
+    void beginWorld(int _surfaceId);
+    void endWorld(int _surfaceId);
     void update();
     void setup();
     
@@ -23,6 +26,7 @@ public:
     void receiveOsc(ofxOscMessage * m, string rest);
     
     ofLight light;
+    ofLight dirLight;
     
     void keyPressed(int key);
     void keyReleased(int key);
@@ -46,5 +50,15 @@ public:
 	
 	float						jointLength;
     
+    ofTexture texture;
+    
+    ofVbo vbo;
+    ofShader shader;
+    
+    vector <ofVec3f> points;
+    vector <ofVec3f> sizes;
+    
+    float camDist;
+
     
 };

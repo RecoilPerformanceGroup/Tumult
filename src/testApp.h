@@ -11,6 +11,7 @@
 #include "BulletTestScene.h"
 #include "ofxUI.h"
 
+
 class testApp : public ofBaseApp
 {
 public:
@@ -65,7 +66,6 @@ public:
     ofxXmlSettings settings;
     
     void drawScenes(int _surfaceId=0);
-    
     
     BulletTestScene * clothScene;
     vector<ContentScene*> contentScenes;
