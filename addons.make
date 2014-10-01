@@ -1,3 +1,7 @@
-ofxBox2d
-ofxStereoCamera
+ofxOsc
+ofxXmlSettings
+ofxBullet
 ofxSyphon
+ofxUI
+addons
+ofxOpenCv

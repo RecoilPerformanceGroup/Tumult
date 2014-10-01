@@ -24,6 +24,7 @@ public:
     float height;
     
     bool enabled;
+    bool drawToPlanes = false;
     float time;
     
     ofCamera * camRef;
@@ -33,6 +34,7 @@ public:
     
     virtual ~ContentScene(){}
     
+    virtual void flatDraw(){};
     virtual void debugDraw(int _surfaceId=0) {};
     virtual void exit(){};
     virtual void receiveOsc(ofxOscMessage * m, string rest) {};
@@ -41,7 +43,7 @@ public:
         gui->addWidgetDown(new ofxUILabel(name, OFX_UI_FONT_SMALL));
         gui->addWidgetDown(new ofxUILabel("OSC Address: " + oscAddress, OFX_UI_FONT_SMALL));
         gui->addSpacer(width, 1);
-        //gui->addToggle(indexStr+"Enabled", &enabled);
+        gui->addToggle(indexStr+"Enabled", &enabled);
     }
     
     virtual void guiEvent(ofxUIEventArgs &e) {};
@@ -84,6 +86,7 @@ public:
             ofPopStyle();ofPopMatrix();glPopMatrix();
         }
     };
+    
     void beginSceneWorld(int _surfaceId=0){
         if(enabled) {
             beginWorld(_surfaceId);

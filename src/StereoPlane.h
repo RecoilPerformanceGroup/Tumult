@@ -8,7 +8,7 @@
 
 #pragma once
 #include "ofxCoolGlasses.h"
-#include "ofxGLWarper.h"
+//#include "ofxGLWarper.h"
 
 class StereoPlane {
     
@@ -315,9 +315,7 @@ public:
     void exit() {
         
         ofLog(OF_LOG_NOTICE, "Saving data for plane: " + name);
-        
         settings->pushTag(name);
-
         settings->popTag();
     }
     

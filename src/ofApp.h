@@ -2,13 +2,14 @@
 
 #include "ofMain.h"
 #include "ofxSyphon.h"
-#include "ofxGui.h"
 #include "ofxXmlSettings.h"
 #include "ofxOscReceiver.h"
 #include "StereoPlane.h"
 #include "ContentScene.h"
 #include "TestScene.h"
-#include "BulletTestScene.h"
+#include "tumultVideoMixer.h"
+
+//#include "BulletTestScene.h"
 #include "ofxUI.h"
 
 
@@ -32,11 +33,10 @@ public:
     
     void exit();
     ofxSyphonServer sbsOutputServer;
-    
     bool showGrid;
-
+    
     ofxOscReceiver oscReceiver;
-//  ofxOscSender oscSender;
+    // ofxOscSender oscSender;
     
     float eyeSeperation;
     
@@ -67,7 +67,8 @@ public:
     
     void drawScenes(int _surfaceId=0);
     
-    BulletTestScene * clothScene;
+    //BulletTestScene * clothScene;
+    VideoMixer * vidMix;
     vector<ContentScene*> contentScenes;
-        
+    
 };

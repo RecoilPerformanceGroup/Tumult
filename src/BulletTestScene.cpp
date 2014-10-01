@@ -136,7 +136,7 @@ void BulletTestScene::draw(int _surfaceId) {
 	}
 	ofSetColor(255, 255, 255, 150);
 	for(int i = 0; i < joints.size(); i++) {
-		//joints[i]->draw();
+		joints[i]->draw();
 	}
     
 	light.disable();
